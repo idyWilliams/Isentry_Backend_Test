@@ -13,10 +13,13 @@ def get_db():
     finally:
         db.close() 
 
-@router.post("/items/", response_model=ItemSchema)
+@router.post("/items/", response_model=ItemSchema, status_code=201)
 def create_item(item_create: ItemCreate, db: Session = Depends(get_db)):
     return item.create_item(db, item_create)
+
 
 @router.get("/items/", response_model=list[ItemSchema])
 def read_items(skip: int=0, limit: int=10, db: Session = Depends(get_db)):
     return item.get_items(db, skip=skip, limit=limit)
+
+
