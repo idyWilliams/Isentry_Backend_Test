@@ -13,7 +13,7 @@ def get_db():
     finally:
         db.close() 
 
-@router.post("/items/", response_model=ItemSchema)
+@router.post("/items/", response_model=ItemSchema, status_code=201)
 def create_item(item_create: ItemCreate, db: Session = Depends(get_db)):
     return item.create_item(db, item_create)
 
