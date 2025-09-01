@@ -9,3 +9,6 @@ class ItemCreate(ItemBase):
 
 class ItemSchema(ItemBase):
     id: int
+
+class Config:
+        orm_mode = True
